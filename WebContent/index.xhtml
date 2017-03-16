@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:t="http://xmlns.jcp.org/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:fc="http://xmlns.jcp.org/jsp/jstl/functions">
+
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>KedNasdake</title>
+
+	<style media="screen" type="text/css">
+
+		  @import "#{facesContext.externalContext.request.contextPath}/css/style.css"
+		
+	</style>
+	
+	 
+</h:head>
+<h:body>
+
+	<h:form id="form">
+
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:panelGrid columns="2">
+
+			<p:panel id="stockTradePanelID"
+				footer="Stock Trade Details" style="margin-bottom:20px">
+
+				<p:dataTable id="stockTradeDT" var="stockTrade"
+					value="#{stockTradeController.loadStockTrades}">
+					<f:facet name="header">
+	            		Stock Trade
+	        		</f:facet>
+					<p:column headerText="Id">
+						<h:outputText value="#{stockTrade.stId}" />
+					</p:column>
+					<p:column headerText="Symbol">
+						<h:outputText value="#{stockTrade.stSymbol}" />
+					</p:column>
+					<p:column headerText="Date">
+						<h:outputText value="#{stockTrade.stDate}" />
+					</p:column>
+					<p:column headerText="Quantity">
+						<h:outputText value="#{stockTrade.stQuantity}" />
+					</p:column>
+					<p:column headerText="Sales">
+						<h:outputText value="#{stockTrade.stSales}" />
+					</p:column>
+					<p:column headerText="Price">
+						<h:outputText value="#{stockTrade.stPrice}" />
+					</p:column>
+					<!-- 
+					<p:column style="width:32px;text-align: center">
+						<p:commandButton update=":form:carDetail"
+							oncomplete="PF('stockTradeDialog').show()" icon="ui-icon-search"
+							title="View">
+							<f:setPropertyActionListener value="#{stockTrade}"
+								target="#{stockTradeController.selectedStockTrade}" />
+						</p:commandButton>
+					</p:column>
+					-->
+				</p:dataTable>
+
+			</p:panel>
+
+			<p:panel id="gbcePanelID" footer="GBCE Details"
+				style="margin-bottom:20px">
+
+				<p:dataTable id="gbceDT" var="gbce" value="#{gbceController.getGbce}">
+					<f:facet name="header">
+	            		GBCE
+	        		</f:facet>
+					<p:column headerText="Id">
+						<h:outputText value="#{gbce.gbceId}" />
+					</p:column>
+					<p:column headerText="Symbol">
+						<h:outputText value="#{gbce.gbceSymbol}" />
+					</p:column>
+					<p:column headerText="Type">
+						<h:outputText value="#{gbce.gbceType}" />
+					</p:column>
+					<p:column headerText="Last Dividend">
+						<h:outputText value="#{gbce.gbceLastDividend}" />
+					</p:column>
+					<p:column headerText="Fixed Dividend">
+						<h:outputText value="#{gbce.gbceFixedDividend}" />
+					</p:column>
+					<p:column headerText="Value">
+						<h:outputText value="#{gbce.gbceValue}" />
+					</p:column>
+					<p:column headerText="Price">
+						<h:outputText value="#{gbce.gbcePrice}" />
+					</p:column>
+					<!-- 
+					<p:column style="width:32px;text-align: center">
+						<p:commandButton update=":form:carDetail"
+							oncomplete="PF('gbceDialog').show()" icon="ui-icon-search"
+							title="View">
+							<f:setPropertyActionListener value="#{gbce}"
+								target="#{gbceController.selectedGbce}" />
+						</p:commandButton>
+					</p:column>
+					 -->
+				</p:dataTable>
+
+			</p:panel>
+
+		</p:panelGrid>
+
+	</h:form>
+
+</h:body>
+
+</html>
